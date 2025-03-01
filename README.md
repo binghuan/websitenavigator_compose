@@ -91,7 +91,7 @@ Response:
   ]
 }
 
-Tasks:
+Task:
 1. Develop an app that displays various web pages.  
 2. Enable users to swipe left or right to navigate between pages.  
 3. Display a progress bar before each page loads, indicating the loading progress, and hide it once the page is fully loaded.  

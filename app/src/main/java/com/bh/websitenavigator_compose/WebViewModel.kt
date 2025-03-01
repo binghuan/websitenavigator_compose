@@ -10,18 +10,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 class WebViewModel : ViewModel() {
+    // MutableStateFlow to hold the loading state
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
+    // MutableStateFlow to hold the list of URLs
     private val _urls = MutableStateFlow<List<String>>(emptyList())
     val urls: StateFlow<List<String>> get() = _urls
 
+    // Lazy initialization of the ApiService
     private val apiService: ApiService by lazy {
         Retrofit.Builder().baseUrl("https://binghuan.github.io/download/")
             .addConverterFactory(GsonConverterFactory.create()).build()
             .create(ApiService::class.java)
     }
 
+    // Function to fetch URLs from the API
     fun fetchUrls() {
         viewModelScope.launch {
             _isLoading.value = true
@@ -31,6 +35,7 @@ class WebViewModel : ViewModel() {
         }
     }
 
+    // Function to set the loading state
     fun setLoading(loading: Boolean) {
         _isLoading.value = loading
     }
