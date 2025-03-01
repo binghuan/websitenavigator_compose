@@ -17,7 +17,7 @@ class WebViewModel : ViewModel() {
     val urls: StateFlow<List<String>> get() = _urls
 
     private val apiService: ApiService by lazy {
-        Retrofit.Builder().baseUrl("https://private-58ab56-mocks3.apiary-mock.com/")
+        Retrofit.Builder().baseUrl("https://binghuan.github.io/download/")
             .addConverterFactory(GsonConverterFactory.create()).build()
             .create(ApiService::class.java)
     }
@@ -37,7 +37,7 @@ class WebViewModel : ViewModel() {
 }
 
 interface ApiService {
-    @GET("pages")
+    @GET("private-58ab56-mocks3_apiary-mock_com_pages.json")
     suspend fun getPages(): ApiResponse
 }
 

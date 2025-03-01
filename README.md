@@ -56,7 +56,7 @@ GET https://private-58ab56-mocks3.apiary-mock.com/pages
 This project was created as part of an interview task. The task description is as follows:
 
 ```
-GET - https://private-58ab56-mocks3.apiary-mock.com/pages 
+GET - https://binghuan.github.io/download/private-58ab56-mocks3_apiary-mock_com_pages.json 
 Response: 
 {
   "items": [
