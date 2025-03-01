@@ -51,6 +51,9 @@ The app fetches the list of web pages from the following API endpoint:
 GET https://private-58ab56-mocks3.apiary-mock.com/pages
 ```
 
+## Demo 
+![Demo](./README/demo.gif)
+
 ## Interview Task
 
 This project was created as part of an interview task. The task description is as follows:
