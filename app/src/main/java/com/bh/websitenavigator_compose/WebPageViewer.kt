@@ -23,7 +23,8 @@ import com.bh.websitenavigator_compose.ui.theme.WebSiteNavigatorComposeTheme
 @Composable
 fun WebPageViewer(viewModel: WebViewModel) {
     val urls by viewModel.urls.collectAsState() // Collect the list of URLs from the ViewModel
-    val pagerState = rememberPagerState(pageCount = { urls.size }) // Remember the pager state with the number of pages
+    val pagerState =
+        rememberPagerState(pageCount = { urls.size }) // Remember the pager state with the number of pages
 
     LaunchedEffect(Unit) {
         viewModel.fetchUrls() // Fetch the URLs when the composable is launched
@@ -36,7 +37,8 @@ fun WebPageViewer(viewModel: WebViewModel) {
         val url = urls[page] // Get the URL for the current page
         var isLoading by remember { mutableStateOf(true) } // State to hold the loading state
         var currentUrl by remember { mutableStateOf(url) } // State to hold the current URL
-        val screenshots = remember { mutableMapOf<String, Bitmap>() } // Map to hold the screenshots of visited pages
+        val screenshots =
+            remember { mutableMapOf<String, Bitmap>() } // Map to hold the screenshots of visited pages
 
         Column(modifier = Modifier.fillMaxSize()) {
             OutlinedTextField(
