@@ -89,9 +89,8 @@ Response:
 }
 
 Task:
-
-1. Build an app that shows the different web pages.
-2. Let users swipe back and forth between pages to display the next/previous page.
-3. Before each page is loaded, the page should show a progress bar that indicates the progress of the page load. Hide it once the page is loaded.
-4. If you already saw a page, don't show the progress bar, instead show a screenshot.
+1. Develop an app that displays various web pages.  
+2. Enable users to swipe left or right to navigate between pages.  
+3. Display a progress bar before each page loads, indicating the loading progress, and hide it once the page is fully loaded.  
+4. If a page has already been viewed, show a screenshot instead of the progress bar.  
 ```
