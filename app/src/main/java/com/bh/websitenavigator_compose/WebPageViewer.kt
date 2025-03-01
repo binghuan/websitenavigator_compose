@@ -23,34 +23,33 @@ import com.bh.websitenavigator_compose.ui.theme.WebSiteNavigatorComposeTheme
 @Composable
 fun WebPageViewer(viewModel: WebViewModel) {
     val urls by viewModel.urls.collectAsState() // Collect the list of URLs from the ViewModel
-    val pagerState =
-        rememberPagerState(pageCount = { urls.size }) // Remember the pager state with the number of pages
-    val isLoading by viewModel.isLoading.collectAsState() // Collect the loading state from the ViewModel
-    var currentUrl by remember { mutableStateOf("") } // State to hold the current URL
-    val screenshots =
-        remember { mutableMapOf<String, Bitmap>() } // Map to hold the screenshots of visited pages
+    val pagerState = rememberPagerState(pageCount = { urls.size }) // Remember the pager state with the number of pages
 
     LaunchedEffect(Unit) {
         viewModel.fetchUrls() // Fetch the URLs when the composable is launched
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        OutlinedTextField(
-            value = currentUrl, // Display the current URL
-            onValueChange = {}, // No-op for value change
-            label = { androidx.compose.material3.Text("URL Address") }, // Label for the text field
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            readOnly = true // Make the text field read-only
-        )
+    HorizontalPager(
+        modifier = Modifier.fillMaxSize(),
+        state = pagerState,
+    ) { page ->
+        val url = urls[page] // Get the URL for the current page
+        var isLoading by remember { mutableStateOf(true) } // State to hold the loading state
+        var currentUrl by remember { mutableStateOf(url) } // State to hold the current URL
+        val screenshots = remember { mutableMapOf<String, Bitmap>() } // Map to hold the screenshots of visited pages
 
-        Box(modifier = Modifier.fillMaxSize()) {
-            HorizontalPager(
-                modifier = Modifier.fillMaxSize(),
-                state = pagerState,
-            ) { page ->
-                val url = urls[page] // Get the URL for the current page
+        Column(modifier = Modifier.fillMaxSize()) {
+            OutlinedTextField(
+                value = currentUrl, // Display the current URL
+                onValueChange = {}, // No-op for value change
+                label = { androidx.compose.material3.Text("URL Address") }, // Label for the text field
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                readOnly = true // Make the text field read-only
+            )
+
+            Box(modifier = Modifier.fillMaxSize()) {
                 if (screenshots.containsKey(url)) {
                     Image(
                         bitmap = screenshots[url]!!.asImageBitmap(), // Display the screenshot if available
@@ -66,12 +65,12 @@ fun WebPageViewer(viewModel: WebViewModel) {
                                     ) {
                                         super.onPageStarted(view, url, favicon)
                                         currentUrl = url ?: "" // Update the current URL
-                                        viewModel.setLoading(true) // Set loading state to true
+                                        isLoading = true // Set loading state to true
                                     }
 
                                     override fun onPageFinished(view: WebView?, url: String?) {
                                         super.onPageFinished(view, url)
-                                        viewModel.setLoading(false) // Set loading state to false
+                                        isLoading = false // Set loading state to false
                                         view?.let {
                                             val scale = 0.25f // Scale down the screenshot to 25%
                                             val width = (it.width * scale).toInt()
@@ -93,14 +92,14 @@ fun WebPageViewer(viewModel: WebViewModel) {
                         }, modifier = Modifier.fillMaxSize()
                     )
                 }
-            }
 
-            if (isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(50.dp)
-                        .align(Alignment.Center) // Show a progress indicator while loading
-                )
+                if (isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .size(50.dp)
+                            .align(Alignment.Center) // Show a progress indicator while loading
+                    )
+                }
             }
         }
     }
