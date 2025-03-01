@@ -87,6 +87,8 @@ fun WebPageViewer(viewModel: WebViewModel) {
                                         }
                                     }
                                 }
+
+                                println("Loading index $page, URL: $url")
                                 loadUrl(url) // Load the URL in the WebView
                             }
                         }, modifier = Modifier.fillMaxSize()
