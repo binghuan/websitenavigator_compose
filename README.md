@@ -50,3 +50,48 @@ The app fetches the list of web pages from the following API endpoint:
 ```
 GET https://private-58ab56-mocks3.apiary-mock.com/pages
 ```
+
+## Interview Task
+
+This project was created as part of an interview task. The task description is as follows:
+
+```
+GET - https://private-58ab56-mocks3.apiary-mock.com/pages 
+Response: 
+{
+  "items": [
+    {"url": "https://www.walla.co.il/"},
+    {"url": "https://edition.cnn.com/"},
+    {"url": "https://www.nytimes.com/"},
+    {"url": "https://www.houzz.com/"},
+    {"url": "https://www.w3schools.com/"},
+    {"url": "https://www.geektime.co.il/"},
+    {"url": "https://en.wikipedia.org/"},
+    {"url": "https://www.walla.co.il/"},
+    {"url": "https://www.geektime.co.il/"},
+    {"url": "http://www.techcrunch.com/"},
+    {"url": "http://www.amazon.com/"},
+    {"url": "http://www.aliexpress.com/"},
+    {"url": "http://www.google.com/"},
+    {"url": "http://www.fabric.io/"},
+    {"url": "http://developer.android.com/"},
+    {"url": "http://www.stackoverflow.com/"},
+    {"url": "http://www.marketwatch.com/"},
+    {"url": "http://www.cnn.com/"},
+    {"url": "http://www.bbc.com/"},
+    {"url": "http://www.ivy.co/"},
+    {"url": "http://www.youtube.com/"},
+    {"url": "http://www.instagram.com/"},
+    {"url": "http://www.linkedin.com/"},
+    {"url": "http://www.msn.com/"},
+    {"url": "http://www.yahoo.com/"}
+  ]
+}
+
+Task:
+
+1. Build an app that shows the different web pages.
+2. Let users swipe back and forth between pages to display the next/previous page.
+3. Before each page is loaded, the page should show a progress bar that indicates the progress of the page load. Hide it once the page is loaded.
+4. If you already saw a page, don't show the progress bar, instead show a screenshot.
+```
