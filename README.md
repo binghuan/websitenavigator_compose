@@ -48,7 +48,7 @@ The project uses the following dependencies:
 
 The app fetches the list of web pages from the following API endpoint:
 ```
-GET https://private-58ab56-mocks3.apiary-mock.com/pages
+GET https://binghuan.github.io/download/private-58ab56-mocks3_apiary-mock_com_pages.json
 ```
 
 ## Demo 
